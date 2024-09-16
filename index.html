@@ -5,181 +5,164 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sasha's Bookshelf Signup</title>
     <style>
-        :root {
-            --primary-color: #4CAF50;
-            --background-color: #f0e6ff;
-            --text-color: #333;
+        * {
+            box-sizing: border-box;
         }
-        
         body {
             font-family: 'Georgia', serif;
-            background-color: var(--background-color);
+            background-color: #f0e6ff;
             margin: 0;
             padding: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
-            color: var(--text-color);
+            color: #333;
             font-size: 16px;
         }
-        
+        .content-wrapper {
+            width: 90%;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
         .logo {
-            width: 80px;
-            height: 80px;
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
             overflow: hidden;
-            margin: 1.5rem 0 1rem;
+            margin: 2rem auto;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
-        
         .logo svg {
             width: 100%;
             height: 100%;
         }
-        
         .welcome-text {
             text-align: center;
-            max-width: 90%;
-            margin: 0 auto 1.5rem;
-            padding: 1.5rem;
+            margin: 0 auto 2rem;
+            padding: 2rem;
             line-height: 1.6;
-            font-size: 0.9rem;
+            font-size: 1.1rem;
             background-color: white;
             border-radius: 10px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             position: relative;
         }
-        
         .welcome-text::before,
         .welcome-text::after {
             content: '"';
             font-size: 3rem;
-            color: var(--primary-color);
+            color: #4CAF50;
             position: absolute;
             opacity: 0.5;
         }
-        
         .welcome-text::before {
             top: -5px;
             left: 5px;
         }
-        
         .welcome-text::after {
             bottom: -30px;
             right: 5px;
         }
-        
         .container {
             background-color: white;
-            padding: 1.5rem;
+            padding: 2rem;
             border-radius: 10px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            width: 90%;
-            max-width: 400px;
+            width: 100%;
         }
-        
         form {
             display: flex;
             flex-direction: column;
         }
-        
         .form-row {
             display: flex;
             flex-direction: column;
-            gap: 0.75rem;
-            margin-bottom: 0.75rem;
+            gap: 1rem;
+            margin-bottom: 1rem;
         }
-        
         .form-column {
+            flex: 1;
             display: flex;
             flex-direction: column;
         }
-        
         label {
-            margin-bottom: 0.25rem;
-            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
         }
-        
         input {
-            padding: 0.5rem;
+            padding: 0.75rem;
             border: 1px solid #ccc;
             border-radius: 4px;
             font-family: 'Georgia', serif;
             font-size: 1rem;
-            width: 100%;
-            box-sizing: border-box;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
         }
-        
         button {
-            padding: 0.75rem;
-            background-color: var(--primary-color);
+            padding: 1rem;
+            background-color: #4CAF50;
             color: white;
             border: none;
             border-radius: 4px;
             cursor: pointer;
-            font-size: 1rem;
-            margin-top: 1rem;
+            font-size: 1.1rem;
+            margin-top: 1.5rem;
             font-family: 'Georgia', serif;
             white-space: normal;
             line-height: 1.2;
-            width: 100%;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
         }
-        
         button:hover {
             background-color: #45a049;
         }
-        
-        @media (min-width: 480px) {
+        @media (min-width: 768px) {
             .form-row {
                 flex-direction: row;
-            }
-            
-            .welcome-text {
-                font-size: 1rem;
-            }
-            
-            .logo {
-                width: 100px;
-                height: 100px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="logo">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-            <circle cx="50" cy="50" r="48" fill="#f0e6ff" />
-            <path d="M30 70 Q 40 20 70 35 Q 80 40 75 60 Q 70 80 50 75 Q 40 72 30 70 Z" fill="#fff" />
-            <path d="M36 35 Q 45 15 60 30 L 58 26 L 65 28 Z" fill="#ff69b4" />
-            <circle cx="45" cy="44" r="3" fill="#000" />
-            <path d="M40 60 Q 50 70 60 60" fill="none" stroke="#000" stroke-width="2" />
-        </svg>
-    </div>
-    <div class="welcome-text">
-        <p>Hi! I'm Sasha and these are my favorite books! They're super funny and have the best adventures. Each book is only $3, but you can pay whatever you want. Once you checkout, I'll email you how to get your books and a Venmo link to pay. Can't wait for you to read them!</p>
-    </div>
-    <div class="container">
-        <form action="https://www.libib.com/u/sashabooks" method="GET">
-            <div class="form-row">
-                <div class="form-column">
-                    <label for="firstName">First Name</label>
-                    <input type="text" id="firstName" name="firstName" required>
+    <div class="content-wrapper">
+        <div class="logo">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="48" fill="#f0e6ff" />
+                <path d="M30 70 Q 40 20 70 35 Q 80 40 75 60 Q 70 80 50 75 Q 40 72 30 70 Z" fill="#fff" />
+                <path d="M36 35 Q 45 15 60 30 L 58 26 L 65 28 Z" fill="#ff69b4" />
+                <circle cx="45" cy="44" r="3" fill="#000" />
+                <path d="M40 60 Q 50 70 60 60" fill="none" stroke="#000" stroke-width="2" />
+            </svg>
+        </div>
+        <div class="welcome-text">
+            <p>Hello, welcome to Sasha's bookshelf. Please sign up to buy books from the bookshelf. We suggest $3 for a book, and once you checkout, we will email you with pickup instructions and a Venmo link to send your money. Thank You.</p>
+        </div>
+        <div class="container">
+            <form>
+                <div class="form-row">
+                    <div class="form-column">
+                        <label for="firstName">First Name</label>
+                        <input type="text" id="firstName" name="firstName" required>
+                    </div>
+                    <div class="form-column">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" id="lastName" name="lastName" required>
+                    </div>
                 </div>
-                <div class="form-column">
-                    <label for="lastName">Last Name</label>
-                    <input type="text" id="lastName" name="lastName" required>
-                </div>
-            </div>
-            
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required>
-            
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" required>
-            
-            <button type="submit">Sign Up & Take Me to the Bookshelf</button>
-        </form>
+                
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+                
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+                
+                <button type="submit">Sign Up & Take Me to the Bookshelf</button>
+            </form>
+        </div>
     </div>
 </body>
 </html>
