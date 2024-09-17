@@ -126,6 +126,40 @@
             }
         }
     </style>
+    <script>
+        const form = document.getElementById('apiGatewayForm');
+    
+        form.addEventListener('submit', async (event) => {
+          event.preventDefault();
+    
+          const formData = {
+            first_name: document.getElementById('firstName').value,
+            last_name: document.getElementById('lastname').value,
+            email: document.getElementById('email').value,
+            password: document.getElementById('password').value
+          };
+    
+          try {
+            const response = await fetch('https://timfyl0sr6.execute-api.us-east-1.amazonaws.com/PROD/patron', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(formData)
+            });
+    
+            if (response.ok) {
+              // Redirect to a new page
+              window.location.href = 'https://www.libib.com/u/sashabooks';
+            } else {
+              alert('Error submitting form. Please try again.');
+            }
+          } catch (error) {
+            console.error('Error:', error);
+            alert('An error occurred. Please try again later.');
+          }
+        });
+      </script>
 </head>
 <body>
     <div class="content-wrapper">
@@ -142,7 +176,7 @@
             <p>Hi! I'm Sasha and these are my favorite books! They're super funny and have the best adventures. Each book is only $3, but you can pay whatever you want. Once you checkout, I'll email you how to get your books and a Venmo link to pay. Can't wait for you to read them!</p>
         </div>
         <div class="container">
-            <form>
+            <form id="apiGatewayForm">
                 <div class="form-row">
                     <div class="form-column">
                         <label for="firstName">First Name</label>
