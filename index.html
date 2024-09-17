@@ -125,6 +125,19 @@
                 flex-direction: row;
             }
         }
+        .error-popup {
+            display: none;
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #f44336;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
     </style>
 </head>
 <body>
@@ -141,6 +154,7 @@
         <div class="welcome-text">
             <p>Hi! I'm Sasha and these are my favorite books! They're super funny and have the best adventures. Each book is only $3, but you can pay whatever you want. Once you checkout, I'll email you how to get your books and a Venmo link to pay. Can't wait for you to read them!</p>
         </div>
+        <div id="errorPopup" class="error-popup"></div>
         <div class="container">
             <form id="apiGatewayForm">
                 <div class="form-row">
@@ -156,7 +170,7 @@
                     <label for="email">Email</label>
                     <input type="email" id="email" name="email" required>
                 <br/>
-                    <label for="password">Password</label>
+                    <label for="password">Password (minimum 8 characters)</label>
                     <input type="password" id="password" name="password" required>
                     <button type="submit">Sign Up & Take Me to the Bookshelf</button>
             </form>
@@ -165,9 +179,51 @@
 </body>
 <script>
     const form = document.getElementById('apiGatewayForm');
+    const errorPopup = document.getElementById('errorPopup');
+
+    function showError(message) {
+        errorPopup.textContent = message;            
+        errorPopup.style.display = 'block';
+        setTimeout(() => {
+            errorPopup.style.display = 'none';
+        }, 5000);
+    }
+
+    function validateForm() {
+        const firstName = document.getElementById('firstName').value.trim();
+        const lastName = document.getElementById('lastName').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const password = document.getElementById('password').value;
+
+        if (!firstName) {
+            showError('Please enter your first name.');
+            return false;
+        }
+        if (!lastName) {
+            showError('Please enter your last name.');
+            return false;
+        }
+        if (!email) {
+            showError('Please enter your email address.');
+            return false;
+        }
+        if (!email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+            showError('Please enter a valid email address.');
+            return false;
+        }
+        if (password.length < 8) {
+            showError('Password must be at least 8 characters long.');
+            return false;
+        }
+        return true;
+    }
 
     form.addEventListener('submit', async (event) => {
       event.preventDefault();
+
+      if (!validateForm()) {
+            return;
+        }
 
       const formData = {
         first_name: document.getElementById('firstName').value,
