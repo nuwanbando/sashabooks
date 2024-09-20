@@ -250,6 +250,27 @@
         }
 
         window.location.href = 'https://www.libib.com/u/sashabooks';
+
+        try {
+            const response = await fetch('https://a0o2f7j0r4.execute-api.us-east-1.amazonaws.com/prod/patrons', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formDataEmail)
+            });
+
+            if (response.body != {}) {
+                // Redirect to a new page
+                window.location.href = 'https://www.libib.com/u/sashabooks';
+            } else {
+                //alert('Error submitting form. Please try again.');
+                showError("You haven't registered")
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('An error occurred. Please try again later.');
+        }
         
     })
 
