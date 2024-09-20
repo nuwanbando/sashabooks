@@ -256,7 +256,7 @@
         try {
             const response = await fetch(urlGET);
 
-            if (response.body != {}) {
+            if (response.ok) {
                 // Redirect to a new page
                 window.location.href = 'https://www.libib.com/u/sashabooks';
             } else {
