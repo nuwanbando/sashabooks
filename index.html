@@ -246,17 +246,15 @@
         }
 
         const formDataEmail = {
-            email2: document.getElementById('email2').value
+            email: document.getElementById('email2').value
         }
 
+        const urlGET = new URL('https://a0o2f7j0r4.execute-api.us-east-1.amazonaws.com/prod/patrons');
+
+        Object.keys(formDataEmail).forEach(key => urlGET.searchParams.append(key, formDataEmail[key]));
+
         try {
-            const response = await fetch('https://a0o2f7j0r4.execute-api.us-east-1.amazonaws.com/prod/patrons', {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(formDataEmail)
-            });
+            const response = await fetch(urlGET);
 
             if (response.body != {}) {
                 // Redirect to a new page
