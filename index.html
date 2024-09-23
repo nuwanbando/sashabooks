@@ -296,11 +296,11 @@
           // Redirect to a new page
           window.location.href = 'https://www.libib.com/u/sashabooks';
         } else {
-          alert('Error submitting form. Please try again.');
+            showError('User already exists');
         }
       } catch (error) {
         console.error('Error:', error);
-        alert('An error occurred. Please try again later.');
+        showError('An error occurred. Please try again later.');
       }
     });
   </script>
